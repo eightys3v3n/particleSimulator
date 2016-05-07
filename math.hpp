@@ -15,3 +15,4 @@ double stdAngle(Coord one, Coord two);
 double stdAngle(double x, double y);
 
 #endif // MATH_
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

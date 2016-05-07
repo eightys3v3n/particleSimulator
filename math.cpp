@@ -53,3 +53,5 @@ double stdAngle(double x, double y)
 }
 
 double stdAngle(Coord one, Coord two) { return stdAngle(two.x - one.x, two.y - one.y); }
+
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

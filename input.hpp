@@ -9,3 +9,4 @@ void interpreterCommands(sf::Event* event);
 void input();
 
 #endif // INPUT_
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

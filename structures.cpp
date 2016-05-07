@@ -22,3 +22,4 @@ Particle::Particle()
 	shape.setFillColor(particleColour);
 	shape.setRadius(globalRadius);
 }
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

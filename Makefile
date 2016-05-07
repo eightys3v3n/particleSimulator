@@ -40,3 +40,5 @@ particle.o: structures.o math.o particle.cpp
 clean:
 	if [ -n "*.o" ]; then rm *.o; fi
 	if [ -f "main" ]; then rm main; fi
+
+#written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved

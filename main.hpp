@@ -44,3 +44,4 @@ std::string heldParticle = "";
 std::map< std::string, Particle > particles;
 
 #endif // MAIN_
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

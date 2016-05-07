@@ -56,3 +56,4 @@ long double calc_velocity(long double acceleration)
 
 	return velocity;
 }
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

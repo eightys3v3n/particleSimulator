@@ -23,3 +23,4 @@ std::string generateID();
 std::string generateNewID();
 
 #endif // PARTICLE_
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

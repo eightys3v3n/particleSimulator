@@ -60,3 +60,4 @@ FindResult find(std::string source, std::string pattern)
 
   return result;
 }
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

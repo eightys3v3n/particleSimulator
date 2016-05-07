@@ -280,3 +280,4 @@ void interpretArgs(std::string buffer)
 	}
 	while ( result.position != -1 && buffer != "" );
 }
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/

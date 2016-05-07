@@ -9,3 +9,4 @@ long double calc_acceleration(Particle &particleOne, long double force);
 long double calc_velocity(long double acceleration);
 
 #endif // CALCULATE
+/*written by Terrence Plunkett - contact at eightys3v3n@gmail.com - all rights reserved*/
