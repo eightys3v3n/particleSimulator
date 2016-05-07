@@ -9,7 +9,7 @@ requires: SFML, make, c++ 17+ or gcc 5.3+
 To Run:
 * './main <arguments>'
 
-##Arguments:
+Arguments:
 arguments can be entered when run initially or by typing '/' in the window, then the argument, then enter. the simulation should pause but you will not see what your typing.
 particles<int>    | sets the number of particles in the simulation. will resize while running by deleting particles somewhat randomly.
 framerate<int>    | sets the maximum framerate
