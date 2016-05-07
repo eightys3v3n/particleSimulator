@@ -2,11 +2,11 @@ a program to simulate basic interactions between particles by terrence plunkett 
 
 this program simulates a number of 2D particles on the screen. you can left click to create new particles and drag around particles; right click and drag to select a box that deletes all particles inside it.
 
-* #To Compile:
+To Compile:
 requires: SFML, make, c++ 17+ or gcc 5.3+
 * 'make -j4' || 'make'
 
-* #To Run:
+To Run:
 * './main <arguments>'
 
 ##Arguments:
