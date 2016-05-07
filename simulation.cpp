@@ -2,6 +2,7 @@
 #define SIMULATION_
 
 #include <thread>
+#include <iostream>
 #include <vector>
 #include <cmath>
 #include <chrono>

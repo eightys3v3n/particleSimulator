@@ -141,19 +141,8 @@ void setNetMovement( std::string id )
 
       displacement = calc_displacement(particles[ idA.first ], particles[id]);
       force = calc_force(particles[id], particles[ idA.first ], displacement);
-
-			if ( std::isnan( force ) )
-				std::cout << "force is nan" << std::endl;
-
       acceleration = calc_acceleration(particles[ idA.first ], force);
-
-			if ( std::isnan( acceleration ) )
-				std::cout << "acceleration is nan" << std::endl;
-
       velocity = calc_velocity(acceleration);
-
-			if ( std::isnan( velocity ) )
-				std::cout << "velocity is nan" << std::endl;
 
       net_x_acc += acceleration * cos( radian( displacement.direction.angle ) );
       net_y_acc += acceleration * cos( radian( displacement.direction.angle ) );
@@ -284,11 +273,22 @@ void markDeleted( std::string id )
 
 void deleteParticles()
 {
-	for (auto& id : particles )
+  bool aagain = true;
+
+  while ( aagain )
 	{
-		if ( id.second.remove )
-			particles.erase( id.first );
-	}
+    aagain = false;
+
+    for (auto& id : particles )
+  	{
+  		if ( id.second.remove )
+      {
+  			particles.erase( id.first );
+        aagain = true;
+        break;
+      }
+  	}
+  }
 }
 
 void resize(unsigned int newParticleCount)

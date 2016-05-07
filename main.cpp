@@ -47,8 +47,8 @@ int main(int argc, char** argv)
   // initialize main variables
   initialize();
 
-	while (!quit && window.isOpen())
-	{
+  while (!quit && window.isOpen())
+  {
 		if (!interpreting && !pause)
 			calculate();
 
