@@ -123,12 +123,17 @@ void setNetMovement( std::string id )
   long double net_y_vel;
   long double net_x_acc;
   long double net_y_acc;
+  long double net_x_force;
+  long double net_y_force;
 
   net_x_acc = particles[id].current.acceleration * cos( radian( particles[id].current.direction.angle ) );
   net_y_acc = particles[id].current.acceleration * sin( radian( particles[id].current.direction.angle ) );
 
   net_x_vel = particles[id].current.velocity * cos( radian( particles[id].current.direction.angle ) );
   net_y_vel = particles[id].current.velocity * sin( radian( particles[id].current.direction.angle ) );
+
+  net_x_force = particles[id].current.force * cos( radian( particles[id].current.direction.angle ) );
+  net_y_force = particles[id].current.force * sin( radian( particles[id].current.direction.angle ) );
 
 	for ( auto& idA : particles)
   {
@@ -139,21 +144,31 @@ void setNetMovement( std::string id )
   		long double force;
 		  long double acceleration;
 
-      displacement = calc_displacement(particles[ idA.first ], particles[id]);
+      displacement = calc_displacement(particles[ idA.first ], particles[ id ]);
       force = calc_force(particles[id], particles[ idA.first ], displacement);
       acceleration = calc_acceleration(particles[ idA.first ], force);
       velocity = calc_velocity(acceleration);
 
       net_x_acc += acceleration * cos( radian( displacement.direction.angle ) );
-      net_y_acc += acceleration * cos( radian( displacement.direction.angle ) );
+      net_y_acc += acceleration * sin( radian( displacement.direction.angle ) );
 
       net_x_vel += velocity * cos( radian( displacement.direction.angle ) );
       net_y_vel += velocity * sin( radian( displacement.direction.angle ) );
+
+      net_x_force += force * cos( radian( displacement.direction.angle ) );
+      net_y_force += force * sin( radian( displacement.direction.angle ) );
     }
   }
 
+  // troubleshooting issue #1
+  std::cout << "particle[" << id << "]" << std::endl;
+  std::cout << " acceleration (" << net_x_acc << "," << net_y_acc << ")" << std::endl;
+  std::cout << " velocity (" << net_x_acc << "," << net_y_acc << ")" << std::endl;
+  // end of troubleshooting code
+
   particles[ id ].future.acceleration = sqrt( net_x_acc * net_x_acc + net_y_acc * net_y_acc );
   particles[ id ].future.velocity = sqrt ( net_x_vel * net_x_vel + net_y_vel * net_y_vel );
+  particles[ id ].future.force = sqrt( net_x_force * net_x_force + net_y_force * net_y_force );
   particles[ id ].future.direction.x = net_x_vel;
   particles[ id ].future.direction.y = net_y_vel;
   particles[ id ].future.direction.angle = stdAngle(net_x_vel, net_y_vel);
