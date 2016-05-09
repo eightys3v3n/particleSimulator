@@ -22,7 +22,7 @@ void interpret(std::string buffer)
 
 	std::cout << "interpreting '" << buffer << "'" << std::endl;
 
-	if ( buffer.length() > 9 && buffer.substr( 0, 9 ) == "framerate" && isNumber( buffer[10] ) )
+	if ( buffer.length() > 9 && buffer.substr( 0, 9 ) == "framerate" && isNumber( buffer[9] ) )
 	{
 		framerate = stoi( buffer.substr( 9 ) );
 		window.setFramerateLimit(framerate);
