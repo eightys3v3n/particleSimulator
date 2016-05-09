@@ -160,12 +160,6 @@ void setNetMovement( std::string id )
     }
   }
 
-  // troubleshooting issue #1
-  std::cout << "particle[" << id << "]" << std::endl;
-  std::cout << " acceleration (" << net_x_acc << "," << net_y_acc << ")" << std::endl;
-  std::cout << " velocity (" << net_x_acc << "," << net_y_acc << ")" << std::endl;
-  // end of troubleshooting code
-
   particles[ id ].future.acceleration = sqrt( net_x_acc * net_x_acc + net_y_acc * net_y_acc );
   particles[ id ].future.velocity = sqrt ( net_x_vel * net_x_vel + net_y_vel * net_y_vel );
   particles[ id ].future.force = sqrt( net_x_force * net_x_force + net_y_force * net_y_force );

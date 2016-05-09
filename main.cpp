@@ -8,6 +8,7 @@
 #include "structures.hpp"
 #include "simulation.hpp"
 #include "main.hpp"
+#include "math.hpp"
 using namespace std;
 using namespace chrono;
 
@@ -47,40 +48,10 @@ int main(int argc, char** argv)
   // initialize main variables
   initialize();
 
-  // this is for troubleshooting the negative gravity.
-  particles.clear();
-  Particle particleOne, particleTwo;
-  particleOne.mass = 100000000;
-  particleTwo.mass = 100000000;
-  particleOne.current.position.x = 370;
-  particleOne.current.position.y = 250;
-  particleTwo.current.position.x = 430;
-  particleTwo.current.position.y = 250;
-  particleOne.current.velocity = 0;
-  particleOne.current.acceleration = 0;
-  particleOne.current.direction.x = 0;
-  particleOne.current.direction.y = 0;
-  particleOne.current.direction.angle = 0;
-  particleTwo.current.velocity = 0;
-  particleTwo.current.acceleration = 0;
-  particleTwo.current.direction.x = 0;
-  particleTwo.current.direction.y = 0;
-  particleTwo.current.direction.angle = 0;
-  particleOne.future = particleOne.current;
-  particleTwo.future = particleTwo.current;
-  particles["one"] = particleOne;
-  particles["two"] = particleTwo;
-  // end of troubleshooting code
-
   while (!quit && window.isOpen())
   {
 		if (!interpreting && !pause)
 			calculate();
-
-    // this is for troubleshooting the negative gravity.
-    cout << "particle[one] { force=" << particles["one"].current.force << " & " <<  particles["one"].current.force << " }" << endl;
-    cout << "particle[two] { force=" << particles["two"].current.force << " & " <<  particles["two"].current.force << " }" << endl;
-    // end of troubleshooting code
 
     // calculate the actualFramerate
 		draw();
