@@ -7,13 +7,12 @@
 
 extern sf::RenderWindow window;
 
-extern bool pause, quit, dynamicScale;
+extern bool pause, quit, dynamicScale, hoveringParticle;
 extern int framerate;
 extern long globalRadius;
 extern long long globalMass;
 extern long long particleCount;
-extern std::map< std::string, Particle > particles;
-
+extern std::string hoverParticle;
 extern std::map< std::string, Particle > particles;
 
 void interpret(std::string buffer)
@@ -98,6 +97,20 @@ void interpret(std::string buffer)
 		}
 		else
 			std::cout << "not paused" << std::endl;
+	}
+
+	if ( buffer.substr( 0, 8 ) == "particle" )
+	{
+		FindResult result = find( ".", buffer.substr( 8 ) );
+
+		if ( result.position == -1 )
+		{
+			std::cout << "hovering over particle '" << hoverParticle << "'" << std::endl;
+		}
+		else
+		{
+			std::cout << "more arguments for hover particle" << std::endl;
+		}
 	}
 
 //TODO this needs to be adapted to use ids instead of index numbers - also use FindResult instead of Result

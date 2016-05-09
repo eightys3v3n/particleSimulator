@@ -40,6 +40,8 @@ void drawParticles()
       id.second.shape.setFillColor( sf::Color::Green );
     else if ( id.second.frozen )
       id.second.shape.setFillColor( sf::Color::Red );
+    else if ( id.second.hover )
+      id.second.shape.setFillColor( sf::Color::Blue );
     else
       id.second.shape.setFillColor( sf::Color::White );
 

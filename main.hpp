@@ -20,6 +20,7 @@ bool quit = false;
 bool pause = false;
 bool selecting = false;
 bool holdingParticle = false;
+bool hoveringParticle = false;
 bool followMode = false;
 bool variableParticleRadius = false;
 bool previousParticleState = false;
@@ -41,6 +42,7 @@ long long particleCount = 1;
 std::string commandBuffer = "";
 std::string fontPath = "resources/font.ttf";
 std::string heldParticle = "";
+std::string hoverParticle = "";
 std::map< std::string, Particle > particles;
 
 #endif // MAIN_

@@ -205,6 +205,20 @@ bool checkPosition( std::string id )
   return false;
 }
 
+void growParticle( std::string id )
+{
+  particles[id].shape.setRadius( particles[id].shape.getRadius() + 1 );
+  particles[id].shape.setOrigin( sf::Vector2f( particles[id].shape.getRadius(), particles[id].shape.getRadius() ) );
+  particles[id].shape.setPosition( sf::Vector2f( particles[id].current.position.x, particles[id].current.position.y ) );
+}
+
+void shrinkParticle( std::string id )
+{
+  particles[id].shape.setRadius( particles[id].shape.getRadius() - 1 );
+  particles[id].shape.setOrigin( sf::Vector2f( particles[id].shape.getRadius(), particles[id].shape.getRadius() ) );
+  particles[id].shape.setPosition( sf::Vector2f( particles[id].current.position.x, particles[id].current.position.y ) );
+}
+
 void resetParticle( std::string id )
 {
 	particles[id].mass = globalMass;

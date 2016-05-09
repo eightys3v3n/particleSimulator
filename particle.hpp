@@ -17,6 +17,8 @@ void holdParticle( std::string id );
 void releaseParticle( std::string id );
 void markDeleted( std::string id );
 void deleteParticles();
+void growParticle( std::string id );
+void shrinkParticle( std::string id );
 void resize(unsigned int newParticleCount);
 void scaleSpace(double relativeScale);
 std::string generateID();

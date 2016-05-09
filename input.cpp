@@ -8,7 +8,7 @@
 #include "particle.hpp"
 #include "interpreter.hpp"
 
-extern bool selecting, interpreting, holdingParticle, previousParticleState;
+extern bool selecting, interpreting, holdingParticle, previousParticleState, hoveringParticle;
 extern sf::RenderWindow window;
 extern std::map< std::string, Particle > particles;
 extern sf::IntRect selection;
@@ -16,6 +16,7 @@ extern sf::RectangleShape selectionBox;
 extern std::string commandBuffer;
 extern long double spaceScale;
 extern std::string heldParticle;
+extern std::string hoverParticle;
 
 bool defaultCommands(sf::Event* event)
 {
@@ -41,7 +42,7 @@ bool defaultCommands(sf::Event* event)
 			if ( ! holdingParticle )
 				scaleSpace( 1 - spaceScale );
 			else
-				particles[heldParticle].shape.setRadius( particles[heldParticle].shape.getRadius() - 1 );
+				shrinkParticle( heldParticle );
 
 			return true;
 		}
@@ -51,7 +52,7 @@ bool defaultCommands(sf::Event* event)
 			if ( ! holdingParticle )
 				scaleSpace( 1 + spaceScale );
 			else
-				particles[heldParticle].shape.setRadius( particles[heldParticle].shape.getRadius() + 1 );
+				growParticle( heldParticle );
 
 			return true;
 		}
@@ -154,20 +155,44 @@ bool defaultCommands(sf::Event* event)
 			particles[heldParticle].future.position.x = event->mouseMove.x;
 			particles[heldParticle].future.position.y = event->mouseMove.y;
 		}
+
+		for ( auto& id : particles )
+		{
+			if ( id.second.shape.getGlobalBounds().contains( sf::Vector2f( sf::Mouse::getPosition().x, sf::Mouse::getPosition().y ) ) )
+			{
+				hoverParticle = id.first;
+				id.second.hover = true;
+			}
+			else
+			{
+				id.second.hover = false;
+			}
+		}
 	}
 
 	return false;
 }
 
-void simulationCommands(sf::Event* event)
+bool simulationCommands(sf::Event* event)
 {
 	if (event->type == sf::Event::KeyPressed)
 	{
 		if (event->key.code == 36) // escape key, quit simulation
 			window.close();
 
-		else if (event->key.code == 52) // start command interpreter
+		else if (event->key.code == 52) // '/' start command interpreter
+		{
+			for ( auto& id : particles )
+			{
+				if ( id.second.shape.getGlobalBounds().contains( sf::Vector2f( sf::Mouse::getPosition().x, sf::Mouse::getPosition().y ) ) )
+				{
+					hoverParticle = id.first;
+					std::cout << "hovering over a particle" << std::endl;
+				}
+			}
+
 			interpreting = true;
+		}
 
 		else
 			std::cout << "unknown input:" << event->key.code << std::endl;
@@ -182,6 +207,7 @@ void interpreterCommands(sf::Event* event)
 		{
 			interpreting = false;
 			commandBuffer = "";
+			hoverParticle = "";
 		}
 	}
 
@@ -193,6 +219,7 @@ void interpreterCommands(sf::Event* event)
 			commandBuffer = commandBuffer.substr( 1 );
 			interpretArgs(commandBuffer);
 			commandBuffer = "";
+			hoverParticle = "";
 		}
 
 		else if (event->text.unicode == 8) // delete key

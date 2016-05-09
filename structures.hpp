@@ -53,6 +53,7 @@ struct Particle
     bool frozen = false;
     bool remove = false;
     bool held = false;
+    bool hover = false;
 };
 
 #endif // STRUCTURES_

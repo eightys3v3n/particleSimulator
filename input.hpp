@@ -4,7 +4,7 @@
 #include <SFML/System.hpp>
 
 bool defaultCommands(sf::Event* event);
-void simulationCommands(sf::Event* event);
+bool simulationCommands(sf::Event* event);
 void interpreterCommands(sf::Event* event);
 void input();
 
