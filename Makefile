@@ -1,5 +1,5 @@
-c=g++ -std=c++17 -Wall -Wextra -c -g
-normal=g++ -std=c++17 -Wall -Wextra -g
+c=g++ -std=c++17 -Wall -Wextra -c
+normal=g++ -std=c++17 -Wall -Wextra
 sfml=-lsfml-graphics -lsfml-window -lsfml-system
 
 all: main
