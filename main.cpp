@@ -48,7 +48,7 @@ int main(int argc, char** argv)
   initialize();
 
   // this is for troubleshooting the negative gravity.
-  particles = new std::map< std::string, Particle >;
+  particles.clear();
   Particle particleOne, particleTwo;
   particleOne.mass = 100000000;
   particleTwo.mass = 100000000;
