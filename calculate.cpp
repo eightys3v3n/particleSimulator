@@ -15,14 +15,14 @@ Displacement calc_displacement(Particle &particleOne, Particle &particleTwo)
   if (particleOne.current.position.x == 0 && particleOne.current.position.y == 0 && particleTwo.current.position.x == 0 && particleTwo.current.position.y == 0)
     return displacement;
 
-  long double x = ( particleTwo.current.position.x - particleOne.current.position.x );
-  long double y = ( particleTwo.current.position.y - particleOne.current.position.y );
+  long double x = particleOne.current.position.x - particleTwo.current.position.x;
+  long double y = particleOne.current.position.y - particleTwo.current.position.y;
 
   displacement.direction.x = x;
   displacement.direction.y = y;
   displacement.direction.angle = stdAngle(x, y);
 
-  displacement.distance = sqrt( pow(y, 2) + pow(x, 2) );
+  displacement.distance = sqrt( x * x + y * y );
 
   return displacement;
 }
