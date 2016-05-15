@@ -4,7 +4,7 @@ this program simulates a number of 2D particles on the screen. you can left clic
 
 To Compile:
 requires: SFML, make, c++ 17+ or gcc 5.3+
-* 'make -j4' || 'make'
+* 'make'
 
 To Run:
 * './main <arguments>'
@@ -16,8 +16,8 @@ framerate<int>    | sets the maximum framerate
 globalMass<int>   | sets the mass of every particle
 globalRadius<int> | sets the radius of all the particles
 randomize_masses  | randomizes all the masses
-pause             | pause simulation
-resume            | resume simulation
+pause             | pause simulation (during simulation only, unknown behaviour if used when starting)
+resume            | resume simulation (during simulation only)
 
 left arrow key  | move the entire universe right
 right arrow key | move the entire universe left
